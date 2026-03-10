@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Tic-Tac-Toe</h1>
+
+    <div class="mode-select">
+      <button id="btn-2p" class="mode-btn active">2 Players</button>
+      <button id="btn-ai" class="mode-btn">vs AI</button>
+    </div>
+
+    <div class="scoreboard">
+      <div class="score" id="score-x">
+        <span class="player-label x-label">X</span>
+        <span class="score-val" id="x-wins">0</span>
+      </div>
+      <div class="score draws">
+        <span class="player-label">Draws</span>
+        <span class="score-val" id="draws">0</span>
+      </div>
+      <div class="score" id="score-o">
+        <span class="player-label o-label">O</span>
+        <span class="score-val" id="o-wins">0</span>
+      </div>
+    </div>
+
+    <div class="status" id="status">Player X's turn</div>
+
+    <div class="board" id="board">
+      <div class="cell" data-index="0"></div>
+      <div class="cell" data-index="1"></div>
+      <div class="cell" data-index="2"></div>
+      <div class="cell" data-index="3"></div>
+      <div class="cell" data-index="4"></div>
+      <div class="cell" data-index="5"></div>
+      <div class="cell" data-index="6"></div>
+      <div class="cell" data-index="7"></div>
+      <div class="cell" data-index="8"></div>
+    </div>
+
+    <button class="reset-btn" id="reset-btn">New Game</button>
+    <button class="reset-score-btn" id="reset-score-btn">Reset Scores</button>
+  </div>
+
+  <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>

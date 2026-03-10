@@ -1,0 +1,213 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #1a1a2e;
+  color: #eee;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #e94560, #0f3460);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Mode buttons */
+.mode-select {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.mode-btn {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid #444;
+  background: transparent;
+  color: #aaa;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.mode-btn.active {
+  border-color: #e94560;
+  color: #e94560;
+  background: rgba(233, 69, 96, 0.1);
+}
+
+.mode-btn:hover:not(.active) {
+  border-color: #666;
+  color: #ccc;
+}
+
+/* Scoreboard */
+.scoreboard {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 60px;
+}
+
+.player-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
+}
+
+.x-label { color: #e94560; }
+.o-label { color: #4fc3f7; }
+
+.score-val {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #eee;
+}
+
+/* Status */
+.status {
+  font-size: 1.1rem;
+  color: #ccc;
+  min-height: 1.6rem;
+  transition: all 0.3s;
+}
+
+.status.x-turn { color: #e94560; }
+.status.o-turn { color: #4fc3f7; }
+.status.winner { font-size: 1.4rem; font-weight: 700; }
+.status.draw { color: #aaa; }
+
+/* Board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  background: #16213e;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background: #0f3460;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  user-select: none;
+}
+
+.cell:hover:not(.taken) {
+  background: #1a4a8a;
+  transform: scale(1.03);
+}
+
+.cell.x {
+  color: #e94560;
+  cursor: default;
+}
+
+.cell.o {
+  color: #4fc3f7;
+  cursor: default;
+}
+
+.cell.taken {
+  cursor: default;
+}
+
+.cell.win {
+  background: #1a3a1a;
+  animation: pulse 0.5s ease-out;
+}
+
+.cell.win.x { background: rgba(233, 69, 96, 0.25); }
+.cell.win.o { background: rgba(79, 195, 247, 0.25); }
+
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pop {
+  0%   { transform: scale(0.3); opacity: 0; }
+  70%  { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.cell.x, .cell.o {
+  animation: pop 0.2s ease-out;
+}
+
+/* Buttons */
+.reset-btn, .reset-score-btn {
+  padding: 0.6rem 2rem;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.reset-btn {
+  background: #e94560;
+  color: white;
+}
+
+.reset-btn:hover {
+  background: #c73652;
+  transform: translateY(-1px);
+}
+
+.reset-score-btn {
+  background: transparent;
+  border: 2px solid #444;
+  color: #888;
+}
+
+.reset-score-btn:hover {
+  border-color: #666;
+  color: #aaa;
+}
+
+@media (max-width: 400px) {
+  .cell {
+    width: 80px;
+    height: 80px;
+    font-size: 2.2rem;
+  }
+}
